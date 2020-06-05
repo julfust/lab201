@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>Glitch</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="opening-section">
+
+      <p><span class="text1"></span></p> 
+      <p><span class="text2"></span> <span id="cursor" style="display: none;">_</span></p>
+
+      <div id="code-interface">
+        <div id="shine"></div>
+
+        <table>
+
+          <caption>Votre code :</caption>
+
+          <thead><tr><th colspan="3"><span id="number1">_ </span><span id="number2">_ </span><span id="number3">_ </span></th></tr></thead>
+
+          <tbody>
+
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+            </tr>
+
+            <tr>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+            </tr>
+
+            <tr>
+              <td>7</td>
+              <td>8</td>
+              <td>9</td>
+            </tr>
+
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+
+    <div id="load-section">
+      <div id="progress-bar-container">
+        <progress id="progress-bar" value="0" min="0" max="100"></progress>
+        <p id="progress">0%</p>
+        <p id="state">Initialisation en cours<span id="animate-character-container"><span class="animate-character1">.</span><span class="animate-character2">.</span><span class="animate-character3">.</span></span></p>
+      </div>
+    </div>
+
+    <script src="gsap.min.js"></script>
+    <script src="typed.js"></script>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

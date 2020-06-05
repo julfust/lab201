@@ -1,0 +1,197 @@
+@font-face{
+  font-family: 'courier new';
+    src: url("cour.ttf")
+}
+
+@font-face{
+  font-family: 'futured';
+    src: url("Futured.TTF")
+}
+
+html,body{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: black;
+}
+
+
+
+
+.text1, .text2{
+  color: green;
+  font-size: 1.2em;
+  font-family: 'courier new';
+}
+
+#cursor{
+  color: green;
+}
+
+.typed-cursor {
+  color: green;
+}
+
+/* #code-interface{
+  opacity: 0;
+} */
+
+#shine {
+  z-index: -1;
+  position: absolute;
+  top: calc(43% - 20px);
+  left: calc(34% - 20px);
+  width: 480px;
+  height: 350px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow:
+    0 0 60px 30px #fff,
+    0 0 100px 60px rgb(47, 0, 255),
+    0 0 140px 90px rgb(0, 255, 13);
+}
+
+table
+{
+  margin-top: 7%;
+  margin-left: 30%;
+
+  width: 40%;
+  height: 60%;
+
+  color: green;
+  text-align: center;
+  font-size: 2em;
+  font-family: 'futured';
+  text-shadow: 0 0 3vw rgb(35, 255, 35);
+  animation: flux 2s linear infinite;
+  -moz-animation: flux 2s linear infinite;
+  -webkit-animation: flux 2s linear infinite;
+  -o-animation: flux 2s linear infinite;
+
+  border-collapse: collapse;
+  background-color: black;
+}
+
+td, th /* Mettre une bordure sur les td ET les th */
+{
+  padding: 6%;
+  border: 4px solid green;
+}
+
+
+
+
+#defaultCanvas0, #load-section{
+  display: none;
+}
+
+/*Canvas*/
+#defaultCanvas0, #progress-bar, #progress, #state, .animate-character1, .animate-character2, .animate-character2{
+  opacity: 0;
+}
+
+#defaultCanvas0{
+  top: 30%;
+  left: 23%;
+
+  position: absolute;
+}
+
+
+
+
+/* Progress bar */
+#progress-bar-container{
+  width: 27%;
+
+  margin-top: 30%;
+  margin-left: 35%;
+
+  color: white;
+  text-align: center;
+}
+
+#progress, #state{
+  margin-bottom: -3%;
+  font-family: 'futured';
+  color: rgb(81, 251, 66);
+  font-size: 3vw;
+  line-height: 3vw;
+  text-shadow: 0 0 3vw rgb(35, 255, 35);
+  animation: flux 2s linear infinite;
+  -moz-animation: flux 2s linear infinite;
+  -webkit-animation: flux 2s linear infinite;
+  -o-animation: flux 2s linear infinite;
+}
+
+#progress{
+  font-size: 3vw;
+  line-height: 3vw;
+}
+
+#state{
+  font-size: 1.8vw;
+  line-height: 1.8vw;
+}
+
+progress{
+  border-radius: 2px;
+  display: inline-block;
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+  width: 360px;
+  height: 28px;
+  padding: 5px 5px 4px 5px;
+  border: 2px solid #222a24;
+  box-shadow: 0 1px 0 rgba(255,255,255,.2);   
+}
+
+/* Style de la barre pour Firefox*/
+progress::-moz-progress-bar{
+  background: #2be002;
+  background-size: 300px 20px, auto, auto;
+  background-position: -300px 0, top, top;
+  background-position: top right, top, top;
+  box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 
+              0 -1px 0 rgba(0,0,0,.8) inset,
+              0 0 2px black;
+
+}
+
+/* Style de la barre pour Chrome*/
+progress::-webkit-progress-value{
+ 
+  /* Code identique mais avec les bons préfixes! */
+  background: #2be002;
+  background-size: 300px 20px, auto, auto;
+  background-position: -300px 0, top, top;
+  background-position: top right, top, top;
+  box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 
+              0 -1px 0 rgba(0,0,0,.8) inset,
+              0 0 2px black;
+
+}
+
+/* Enlève la couleur d'arrière-plan */
+progress::-webkit-progress-bar{
+  background: transparent;
+}
+
+
+
+@keyframes flux {
+  0%,
+
+  100% {
+    text-shadow: 0 0 1vw rgb(16, 255, 28), 0 0 3vw rgb(16, 255, 28), 0 0 10vw rgb(16, 255, 28), 0 0 10vw rgb(16, 255, 28), 0 0 .4vw rgb(139, 254, 149), .2vw .2vw .1vw #147280;
+    color: rgb(40, 254, 68);
+  }
+
+  50% {
+    text-shadow: 0 0 .5vw #088008, 0 0 1.5vw #088008, 0 0 5vw #088008, 0 0 5vw #088008, 0 0 .2vw #088008, .2vw .2vw .1vw rgb(14, 64, 10);
+    color: rgb(20, 128, 52);
+  }
+}
