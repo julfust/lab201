@@ -1,22 +1,40 @@
 @font-face{
   font-family: 'courier new';
-    src: url("cour.ttf")
+    src: url("../font/cour.ttf")
 }
 
 @font-face{
   font-family: 'futured';
-    src: url("Futured.TTF")
+    src: url("../font/Futured.TTF")
+}
+
+@font-face{
+  font-family: 'Arrows';
+    src: url("../font/Arrows.ttf")
 }
 
 html,body{
   margin: 0;
   padding: 0;
+  padding-top: 0%;
 }
 
 body{
   background-color: black;
+  overflow: hidden;
 }
 
+#first-page{
+  width: 100vw;
+  height: 110vh;
+  position: relative;
+}
+
+#second-page{
+  width: 100vw;
+  height: 110vh;
+  background-color: blue;
+}
 
 
 
@@ -34,9 +52,9 @@ body{
   color: green;
 }
 
-/* #code-interface{
+#code-interface{
   opacity: 0;
-} */
+}
 
 #shine {
   z-index: -1;
@@ -51,6 +69,10 @@ body{
     0 0 60px 30px #fff,
     0 0 100px 60px rgb(47, 0, 255),
     0 0 140px 90px rgb(0, 255, 13);
+}
+
+#animate-character-container1, .animate-character1, .animate-character2, .animate-character3{
+  opacity: 0;
 }
 
 table
@@ -89,7 +111,7 @@ td, th /* Mettre une bordure sur les td ET les th */
 }
 
 /*Canvas*/
-#defaultCanvas0, #progress-bar, #progress, #state, .animate-character1, .animate-character2, .animate-character2{
+#progress-bar, #progress, #state, #arrow{
   opacity: 0;
 }
 
@@ -114,7 +136,7 @@ td, th /* Mettre une bordure sur les td ET les th */
   text-align: center;
 }
 
-#progress, #state{
+#progress, #state, #arrow{
   margin-bottom: -3%;
   font-family: 'futured';
   color: rgb(81, 251, 66);
@@ -135,6 +157,10 @@ td, th /* Mettre une bordure sur les td ET les th */
 #state{
   font-size: 1.8vw;
   line-height: 1.8vw;
+}
+
+#arrow{
+  font-family: 'Arrows';
 }
 
 progress{

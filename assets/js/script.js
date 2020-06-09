@@ -1,33 +1,49 @@
-// //Ecriture terminal
-// const typed1 = new Typed('.text1', {
-//     startDelay: 500,
-//     loop: false,
-//     strings: ['Bienvenue dans le programme Trinity.'],
-//     showCursor: true,
-//     cursorChar: '_',
-//     typeSpeed: 30,
-//     onComplete: function (self) 
-//     {
-//         self.cursor.remove();
-//     }
-// })
+function wheel(event) {
+    gsap.fromTo("#defaultCanvas0", {opacity:1}, {opacity:0, duration:1})
+    let animate = gsap.fromTo("#first-page", {opacity:1}, {opacity:0, duration:1})
+    animate.eventCallback("onComplete", function(){
+        $("#defaultCanvas0").css("display", "none");
+        gsap.fromTo("body", {y:0}, {y:-1100, duration:1, ease:"power4.in"});
+    })
+}
 
-// const typed2 = new Typed('.text2', {
-//     startDelay: 5000,
-//     loop: false,
-//     strings: ['Veuillez composer votre code personnel à 3 chiffres, ^500 afin d\'accéder à votre interface :^500'],
-//     typeSpeed: 30,
-//     showCursor: false,
-//     preStringTyped: (arrayPos, self) => 
-//     {
-//         $('#cursor').css("display", "inline");
-//     },
-//     onComplete: function (self) 
-//     {
-//         $('#cursor').css("display", "none");
-//         gsap.fromTo("#code-interface", {opacity:0}, {opacity: 1, duration:5})
-//     }
-// })
+if (window.addEventListener)
+{
+    window.addEventListener('DOMMouseScroll', wheel, false);
+    window.onmousewheel = document.onmousewheel = wheel;
+}
+
+
+//Ecriture terminal
+const typed1 = new Typed('.text1', {
+    startDelay: 500,
+    loop: false,
+    strings: ['Bienvenue dans le programme Trinity.'],
+    showCursor: true,
+    cursorChar: '_',
+    typeSpeed: 30,
+    onComplete: function (self) 
+    {
+        self.cursor.remove();
+    }
+})
+
+const typed2 = new Typed('.text2', {
+    startDelay: 5000,
+    loop: false,
+    strings: ['Veuillez composer votre code personnel à 3 chiffres, ^500 afin d\'accéder à votre interface :^500'],
+    typeSpeed: 30,
+    showCursor: false,
+    preStringTyped: (arrayPos, self) => 
+    {
+        $('#cursor').css("display", "inline");
+    },
+    onComplete: function (self) 
+    {
+        $('#cursor').css("display", "none");
+        gsap.fromTo("#code-interface", {opacity:0}, {opacity: 1, duration:5})
+    }
+})
 
 
 
@@ -43,54 +59,115 @@ $('td').click(function () {
 
     if(count == 3)
     {
-        //Probleme: les instructions en jquery (empty, append...) se réalise avant que les animations de GSAP se termine
-        //Solution: il faut trouver un moyen d'inclure ces instructions en animation GSAP ce qui nous permettrais de les contoller dans une timeline
-        gsap.fromTo("caption", {opacity:1}, {opacity: 0, duration:3});
-        $('caption').empty();
-        $('caption').append(`Authentification en cours<span id="animate-character-container"><span class="animate-character1">.</span><span class="animate-character2">.</span><span class="animate-character3">.</span></span>`)
+        function step1(){
+            let tl = gsap.timeline()
+                    .fromTo("#table-title", {opacity:1}, {opacity: 0, duration:1})
+                    .set("#table-title", {text: 'Authentification en cour'})
+                    .fromTo("#table-title", {opacity:0}, {opacity: 1, duration:1}, "+=1")
+                    .fromTo("#animate-character-container1", {opacity:0}, {opacity: 1}, "-=1")
+            return tl;
+        }
 
-        gsap.fromTo("caption", {opacity:0}, {opacity: 1, duration:3});
+        function step2(){
+            let tl = gsap.timeline()
+                    .fromTo(".animate-character1", {opacity:0}, {opacity: 1, duration:1})
+                    .fromTo(".animate-character2", {opacity:0}, {opacity: 1, duration:1})
+                    .fromTo(".animate-character3", {opacity:0}, {opacity: 1, duration:1})
+                    .fromTo("#animate-character-container1", {opacity:1}, {opacity: 0, duration:1}, "-=0.7")
+                    .repeat(2)
+            return tl;
+        }
+
+        function step3(){
+            let tl = gsap.timeline()
+                    .fromTo("#table-title", {opacity:1}, {opacity: 0, duration:1})
+                    .set("#table-title", {text:'Acces autorise'})
+                    .fromTo("#table-title", {opacity:0}, {opacity: 1, duration:1}, "+=1")
+                    .fromTo("#opening-section", {opacity:1}, {opacity: 0, duration:3}, "+=3")
+            return tl;
+        }
+
+        let master = gsap.timeline();
+        master.add(step1())
+            .add(step2(), "-=0.3")
+            .add(step3(), "-=1")
+
+        master.eventCallback("onComplete", function(){
+            $("#opening-section").css("display", "none");
+            $('#defaultCanvas0').css("display", "block");
+            $("#load-section").css("display", "block");
+            load();
+        });
+    }
+})
+
+function load(){
+
+    function step1(){
+        gsap.timeline()
+        .fromTo("#defaultCanvas0", {opacity:0}, {opacity: 1, duration:3})
+        .fromTo("#progress-bar", {opacity:0}, {opacity: 1, duration:2}, "-=2")
+        .fromTo("#progress", {opacity:0}, {opacity: 1, duration:3}, "-=1.5")
+        .fromTo("#state", {opacity:0}, {opacity: 1, duration:3}, "-=3")
+    }
+
+    function step2(){
         gsap.timeline()
         .fromTo(".animate-character1", {opacity:0}, {opacity: 1, duration:1})
         .fromTo(".animate-character2", {opacity:0}, {opacity: 1, duration:1})
         .fromTo(".animate-character3", {opacity:0}, {opacity: 1, duration:1})
-        .fromTo("#animate-character-container", {opacity:1}, {opacity: 0, duration:1}, "-=0.7")
-        .repeat(3)
-
-        $('caption').empty();
-        $('caption').append(`Acces autorisé`)
-
-        // $('#opening-section').css("display", "none");
-        // $('#defaultCanvas0').css("display", "block");
-        // $('#load-section').css("display", "block");
-
-        // // Gsap animation
-        // setTimeout(() => {
-        //     TweenMax.set("#defaultCanvas, #progress-bar, #progress, #state", {autoAlpha:1});
-
-        //     gsap.timeline()
-        //     .fromTo("#defaultCanvas0", {opacity:0}, {opacity: 1, duration:3})
-        //     .fromTo("#progress-bar", {opacity:0}, {opacity: 1, duration:2}, "-=2")
-        //     .fromTo("#progress", {opacity:0}, {opacity: 1, duration:3}, "-=1.5")
-        //     .fromTo("#state", {opacity:0}, {opacity: 1, duration:3}, "-=3")
-
-        //     gsap.timeline()
-        //     .fromTo(".animate-character1", {opacity:0}, {opacity: 1, duration:1})
-        //     .fromTo(".animate-character2", {opacity:0}, {opacity: 1, duration:1})
-        //     .fromTo(".animate-character3", {opacity:0}, {opacity: 1, duration:1})
-        //     .fromTo("#animate-character-container", {opacity:1}, {opacity: 0, duration:1}, "-=0.7")
-        //     .repeat(-1)
-            
-        // }, 500);
-
-        // setInterval(() => {
-        //     if(loaded == false)
-        //     {
-        //         modifValues();
-        //     }
-        // }, 50);
+        .fromTo("#animate-character-container2", {opacity:1}, {opacity: 0, duration:1}, "-=0.7")
+        .repeat(-1)
     }
-})
+
+    let master = gsap.timeline();
+        master.add(step1())
+            .add(step2())
+            
+    master.eventCallback("onComplete", function(){
+        setInterval(() => {
+            if(loaded == false)
+            {
+                modifValues();
+            }
+        }, 50);
+    })
+}
+
+//Fonction progress bar
+let loaded = false;
+
+function modifValues(){
+    
+    let val = $('#progress-bar').attr('value');
+
+    if(val >= 100){
+        loaded = true;
+        start();
+    }
+
+    let newVal = val * 1 + 0.25;
+    let txt = Math.floor(newVal)+'%';      
+      
+    $('#progress-bar').attr('value', newVal).text(txt);
+    $('#progress').html(txt);
+}
+
+function start(){
+    let tl = gsap.timeline()
+            .fromTo("#progress-bar", {opacity:1}, {opacity:0, duration:2})
+            .fromTo("#progress", {opacity:1}, {opacity:0, duration:2}, "-=2")
+            .fromTo("#progress-bar-container", {opacity:1}, {opacity:0, duration:2}, "-=2")
+            .fromTo("#progress-bar-container", {y:0}, {y:-100})
+            .set("#state", {text: 'Pour avancer, scrollez vers le bas'})
+            .fromTo("#progress-bar-container", {opacity:0}, {opacity:1, duration:2})
+    
+    tl.eventCallback("onComplete", function(){
+        $("#arrow").css("display", "block");
+        gsap.fromTo("#arrow", {opacity:0}, {opacity:1, duration:1})
+        gsap.fromTo("#arrow", {y:0}, {y:10, yoyo:true, repeat:-1, duration: 1});
+    })
+}
 
 
 
@@ -98,7 +175,7 @@ $('td').click(function () {
 //Fonction glitch image
 let isLoaded = false;
 let glitch;
-let imgSrc = 'Webp.net-resizeimage(2).png';
+let imgSrc = 'assets/img/logo-trinity.png';
 
 function setup() {
     background(0);
@@ -378,25 +455,4 @@ class Glitch {
 
     }
 
-}
-
-
-
-
-//Fonction progress bar
-let loaded = false;
-
-function modifValues(){
-    
-    let val = $('#progress-bar').attr('value');
-
-    if(val >= 100){
-        loaded = true;
-    }
-
-    let newVal = val * 1 + 0.25;
-    let txt = Math.floor(newVal)+'%';      
-      
-    $('#progress-bar').attr('value', newVal).text(txt);
-    $('#progress').html(txt);
 }

@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width" />
   <title>Glitch</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+  <div id="first-page">
     <div id="opening-section">
 
       <p><span class="text1"></span></p> 
@@ -17,7 +18,7 @@
 
         <table>
 
-          <caption>Votre code :</caption>
+          <caption><span id="table-title">Votre code :</span><span id="animate-character-container1"><span class="animate-character1">.</span><span class="animate-character2">.</span><span class="animate-character3">.</span></span></caption>
 
           <thead><tr><th colspan="3"><span id="number1">_ </span><span id="number2">_ </span><span id="number3">_ </span></th></tr></thead>
 
@@ -52,14 +53,21 @@
       <div id="progress-bar-container">
         <progress id="progress-bar" value="0" min="0" max="100"></progress>
         <p id="progress">0%</p>
-        <p id="state">Initialisation en cours<span id="animate-character-container"><span class="animate-character1">.</span><span class="animate-character2">.</span><span class="animate-character3">.</span></span></p>
+        <p id="state">Initialisation en cours<span id="animate-character-container2"><span class="animate-character1">.</span><span class="animate-character2">.</span><span class="animate-character3">.</span></span></p>
+        <p id="arrow" style="display: none;">D</p>
       </div>
     </div>
+  </div>
 
-    <script src="gsap.min.js"></script>
-    <script src="typed.js"></script>
-    <script src="jquery-3.4.1.min.js"></script>
+  <div id="second-page">
+
+  </div>
+
+    <script src="assets/lib/gsap.min.js"></script>
+    <script src="assets/lib/TextPlugin.min.js"></script>
+    <script src="assets/lib/typed.js"></script>
+    <script src="assets/lib/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.min.js"></script>
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
