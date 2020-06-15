@@ -1,138 +1,170 @@
-function wheel(event) {
-    gsap.fromTo("#defaultCanvas0", {opacity:1}, {opacity:0, duration:1})
-    let animate = gsap.fromTo("#first-page", {opacity:1}, {opacity:0, duration:1})
-    animate.eventCallback("onComplete", function(){
-        $("#defaultCanvas0").css("display", "none");
-        gsap.fromTo("body", {y:0}, {y:-1100, duration:1, ease:"power4.in"});
-    })
-}
+// //Scroll changement de page
+// function wheel(event){
+//     let strings = $("body").css("transform");
+//     let tab_decoup = strings.split(", ");
 
-if (window.addEventListener)
-{
-    window.addEventListener('DOMMouseScroll', wheel, false);
-    window.onmousewheel = document.onmousewheel = wheel;
-}
+//     gsap.fromTo("#defaultCanvas0", {opacity:1}, {opacity:0, duration:1});
 
+//     let animate = gsap.fromTo("#first-page", {opacity:1}, {opacity:0, duration:1});
 
-//Ecriture terminal
-const typed1 = new Typed('.text1', {
-    startDelay: 500,
-    loop: false,
-    strings: ['Bienvenue dans le programme Trinity.'],
-    showCursor: true,
-    cursorChar: '_',
-    typeSpeed: 30,
-    onComplete: function (self) 
-    {
-        self.cursor.remove();
-    }
-})
+//     animate.eventCallback("onComplete", function(){
+//         $("#defaultCanvas0").css("display", "none");
 
-const typed2 = new Typed('.text2', {
-    startDelay: 5000,
-    loop: false,
-    strings: ['Veuillez composer votre code personnel à 3 chiffres, ^500 afin d\'accéder à votre interface :^500'],
-    typeSpeed: 30,
-    showCursor: false,
-    preStringTyped: (arrayPos, self) => 
-    {
-        $('#cursor').css("display", "inline");
-    },
-    onComplete: function (self) 
-    {
-        $('#cursor').css("display", "none");
-        gsap.fromTo("#code-interface", {opacity:0}, {opacity: 1, duration:5})
-    }
-})
+//         if(tab_decoup[5] == undefined)
+//         gsap.fromTo("body", {y:0}, {y:-720, duration:1, ease:"power4.in"});
+
+//         else{
+//             let position1 = tab_decoup[5].replace(")", "");
+//             let position2 = position1 - 700;
+           
+//             gsap.fromTo("body", {y:position1}, {y:position2, duration:1, ease:"power4.in"});
+//         }
+//     })
+// }
+
+// if (window.addEventListener)
+// {
+//     window.addEventListener('DOMMouseScroll', wheel, false);
+//     window.onmousewheel = document.onmousewheel = wheel;
+// }
 
 
 
-let count = 0;
-//Ecriture du code
-$('td').click(function () {
-    count++;
 
-    let numberSelected = $(this).text();
-    let cursorSelected = "#number" + count; 
-    $(`${cursorSelected}`).empty();
-    $(`${cursorSelected}`).append(numberSelected);
+// $("#nav-bar > ul > li").mouseenter(function(){
+//     let string = $(this).text();
+//     console.log(string);
 
-    if(count == 3)
-    {
-        function step1(){
-            let tl = gsap.timeline()
-                    .fromTo("#table-title", {opacity:1}, {opacity: 0, duration:1})
-                    .set("#table-title", {text: 'Authentification en cour'})
-                    .fromTo("#table-title", {opacity:0}, {opacity: 1, duration:1}, "+=1")
-                    .fromTo("#animate-character-container1", {opacity:0}, {opacity: 1}, "-=1")
-            return tl;
-        }
+//     $(this).glitch({
+//         chars: '!<>-_\\/[]{}—=+*^?#_',
+//         charTime: 1,
+//         finalText: string,
+//         done:function(){
+//             console.log('done!');
+//         }            
+//     });
+// })
 
-        function step2(){
-            let tl = gsap.timeline()
-                    .fromTo(".animate-character1", {opacity:0}, {opacity: 1, duration:1})
-                    .fromTo(".animate-character2", {opacity:0}, {opacity: 1, duration:1})
-                    .fromTo(".animate-character3", {opacity:0}, {opacity: 1, duration:1})
-                    .fromTo("#animate-character-container1", {opacity:1}, {opacity: 0, duration:1}, "-=0.7")
-                    .repeat(2)
-            return tl;
-        }
 
-        function step3(){
-            let tl = gsap.timeline()
-                    .fromTo("#table-title", {opacity:1}, {opacity: 0, duration:1})
-                    .set("#table-title", {text:'Acces autorise'})
-                    .fromTo("#table-title", {opacity:0}, {opacity: 1, duration:1}, "+=1")
-                    .fromTo("#opening-section", {opacity:1}, {opacity: 0, duration:3}, "+=3")
-            return tl;
-        }
+// //Ecriture terminal
+// const typed1 = new Typed('.text1', {
+//     startDelay: 500,
+//     loop: false,
+//     strings: ['Bienvenue dans le programme Trinity.'],
+//     showCursor: true,
+//     cursorChar: '_',
+//     typeSpeed: 30,
+//     onComplete: function (self) 
+//     {
+//         self.cursor.remove();
+//     }
+// })
 
-        let master = gsap.timeline();
-        master.add(step1())
-            .add(step2(), "-=0.3")
-            .add(step3(), "-=1")
+// const typed2 = new Typed('.text2', {
+//     startDelay: 5000,
+//     loop: false,
+//     strings: ['Veuillez composer votre code personnel à 3 chiffres, ^500 afin d\'accéder à votre interface :^500'],
+//     typeSpeed: 30,
+//     showCursor: false,
+//     preStringTyped: (arrayPos, self) => 
+//     {
+//         $('#cursor').css("display", "inline");
+//     },
+//     onComplete: function (self) 
+//     {
+//         $('#cursor').css("display", "none");
+//         gsap.fromTo("#code-interface", {opacity:0}, {opacity: 1, duration:5})
+//     }
+// })
 
-        master.eventCallback("onComplete", function(){
-            $("#opening-section").css("display", "none");
-            $('#defaultCanvas0').css("display", "block");
-            $("#load-section").css("display", "block");
-            load();
-        });
-    }
-})
 
-function load(){
 
-    function step1(){
-        gsap.timeline()
-        .fromTo("#defaultCanvas0", {opacity:0}, {opacity: 1, duration:3})
-        .fromTo("#progress-bar", {opacity:0}, {opacity: 1, duration:2}, "-=2")
-        .fromTo("#progress", {opacity:0}, {opacity: 1, duration:3}, "-=1.5")
-        .fromTo("#state", {opacity:0}, {opacity: 1, duration:3}, "-=3")
-    }
+// let count = 0;
+// //Ecriture du code
+// $('td').click(function () {
+//     count++;
 
-    function step2(){
-        gsap.timeline()
-        .fromTo(".animate-character1", {opacity:0}, {opacity: 1, duration:1})
-        .fromTo(".animate-character2", {opacity:0}, {opacity: 1, duration:1})
-        .fromTo(".animate-character3", {opacity:0}, {opacity: 1, duration:1})
-        .fromTo("#animate-character-container2", {opacity:1}, {opacity: 0, duration:1}, "-=0.7")
-        .repeat(-1)
-    }
+//     let numberSelected = $(this).text();
+//     let cursorSelected = "#number" + count; 
+//     $(`${cursorSelected}`).empty();
+//     $(`${cursorSelected}`).append(numberSelected);
 
-    let master = gsap.timeline();
-        master.add(step1())
-            .add(step2())
+//     if(count == 3)
+//     {
+//         function step1(){
+//             let tl = gsap.timeline()
+//                     .fromTo("#table-title", {opacity:1}, {opacity: 0, duration:1})
+//                     .set("#table-title", {text: 'Authentification en cour'})
+//                     .fromTo("#table-title", {opacity:0}, {opacity: 1, duration:1}, "+=1")
+//                     .fromTo("#animate-character-container1", {opacity:0}, {opacity: 1}, "-=1")
+//             return tl;
+//         }
+
+//         function step2(){
+//             let tl = gsap.timeline()
+//                     .fromTo(".animate-character1", {opacity:0}, {opacity: 1, duration:1})
+//                     .fromTo(".animate-character2", {opacity:0}, {opacity: 1, duration:1})
+//                     .fromTo(".animate-character3", {opacity:0}, {opacity: 1, duration:1})
+//                     .fromTo("#animate-character-container1", {opacity:1}, {opacity: 0, duration:1}, "-=0.7")
+//                     .repeat(2)
+//             return tl;
+//         }
+
+//         function step3(){
+//             let tl = gsap.timeline()
+//                     .fromTo("#table-title", {opacity:1}, {opacity: 0, duration:1})
+//                     .set("#table-title", {text:'Acces autorise'})
+//                     .fromTo("#table-title", {opacity:0}, {opacity: 1, duration:1}, "+=1")
+//                     .fromTo("#opening-section", {opacity:1}, {opacity: 0, duration:3}, "+=3")
+//             return tl;
+//         }
+
+//         let master = gsap.timeline();
+//         master.add(step1())
+//             .add(step2(), "-=0.3")
+//             .add(step3(), "-=1")
+
+//         master.eventCallback("onComplete", function(){
+//             $("#opening-section").css("display", "none");
+//             $('#defaultCanvas0').css("display", "block");
+//             $("#load-section").css("display", "block");
+//             load();
+//         });
+//     }
+// })
+
+// function load(){
+
+//     function step1(){
+//         gsap.timeline()
+//         .fromTo("#defaultCanvas0", {opacity:0}, {opacity: 1, duration:3})
+//         .fromTo("#progress-bar", {opacity:0}, {opacity: 1, duration:2}, "-=2")
+//         .fromTo("#progress", {opacity:0}, {opacity: 1, duration:3}, "-=1.5")
+//         .fromTo("#state", {opacity:0}, {opacity: 1, duration:3}, "-=3")
+//     }
+
+//     function step2(){
+//         gsap.timeline()
+//         .fromTo(".animate-character1", {opacity:0}, {opacity: 1, duration:1})
+//         .fromTo(".animate-character2", {opacity:0}, {opacity: 1, duration:1})
+//         .fromTo(".animate-character3", {opacity:0}, {opacity: 1, duration:1})
+//         .fromTo("#animate-character-container2", {opacity:1}, {opacity: 0, duration:1}, "-=0.7")
+//         .repeat(-1)
+//     }
+
+//     let master = gsap.timeline();
+//         master.add(step1())
+//             .add(step2())
             
-    master.eventCallback("onComplete", function(){
-        setInterval(() => {
-            if(loaded == false)
-            {
-                modifValues();
-            }
-        }, 50);
-    })
-}
+//     master.eventCallback("onComplete", function(){
+//         setInterval(() => {
+//             if(loaded == false)
+//             {
+//                 modifValues();
+//             }
+//         }, 50);
+//     })
+// }
 
 //Fonction progress bar
 let loaded = false;
@@ -160,7 +192,8 @@ function start(){
             .fromTo("#progress-bar-container", {opacity:1}, {opacity:0, duration:2}, "-=2")
             .fromTo("#progress-bar-container", {y:0}, {y:-100})
             .set("#state", {text: 'Pour avancer, scrollez vers le bas'})
-            .fromTo("#progress-bar-container", {opacity:0}, {opacity:1, duration:2})
+            .fromTo("#nav-bar", {opacity:0}, {opacity:1, duration:2})
+            .fromTo("#progress-bar-container", {opacity:0}, {opacity:1, duration:2}, "-=2")
     
     tl.eventCallback("onComplete", function(){
         $("#arrow").css("display", "block");
@@ -456,3 +489,26 @@ class Glitch {
     }
 
 }
+
+//Section artiste
+//Affichage section
+$("#item1").click(()=>{
+    $("#topic1").css("display", "block");
+    $("#topic2").css("display", "none");
+    $("#topic3").css("display", "none");
+    let animation = gsap.fromTo("#topic1", {opacity:0}, {opacity:1, duration:2});
+});
+
+$("#item2").click(()=>{
+    $("#topic1").css("display", "none");
+    $("#topic2").css("display", "block");
+    $("#topic3").css("display", "none");
+    let animation = gsap.fromTo("#topic2", {opacity:0}, {opacity:1, duration:2});
+});
+
+$("#item3").click(()=>{
+    $("#topic1").css("display", "none");
+    $("#topic2").css("display", "none");
+    $("#topic3").css("display", "block");
+    let animation = gsap.fromTo("#topic3", {opacity:0}, {opacity:1, duration:2});
+});

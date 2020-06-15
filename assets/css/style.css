@@ -1,3 +1,4 @@
+/* Police et animation */
 @font-face{
   font-family: 'courier new';
     src: url("../font/cour.ttf")
@@ -13,6 +14,297 @@
     src: url("../font/Arrows.ttf")
 }
 
+@font-face{
+  font-family: 'Speedeasy';
+    src: url("../font/Speedeasy\ Speedy.otf")
+}
+
+@font-face{
+  font-family: 'Nintendoid';
+    src: url("../font/Nintendoid\ 1.ttf")
+}
+
+
+@keyframes shuffle{
+  0%
+  {
+    transform: translateY(0px)
+  }
+  100%
+  {
+    transform: translateY(-350px)
+  }
+}
+
+@keyframes neon1 {
+  0%,
+
+  100% {
+    text-shadow: 0 0 1vw rgb(16, 255, 28), 0 0 3vw rgb(16, 255, 28), 0 0 10vw rgb(16, 255, 28), 0 0 10vw rgb(16, 255, 28), 0 0 .4vw rgb(139, 254, 149), .2vw .2vw .1vw #147280;
+    color: rgb(40, 254, 68);
+  }
+
+  50% {
+    text-shadow: 0 0 .5vw #088008, 0 0 1.5vw #088008, 0 0 5vw #088008, 0 0 5vw #088008, 0 0 .2vw #088008, .2vw .2vw .1vw rgb(14, 64, 10);
+    color: rgb(20, 128, 52);
+  }
+}
+
+@keyframes neon2 {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #1041FF, 0 0 3vw #1041FF, 0 0 10vw #1041FF, 0 0 10vw #1041FF, 0 0 .4vw #8BFDFE, .5vw .5vw .1vw #147280;
+    color: #28D7FE;
+  }
+  50% {
+    text-shadow: 0 0 .5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180, 0 0 5vw #082180, 0 0 .2vw #082180, .5vw .5vw .1vw #0A3940;
+    color: #146C80;
+  }
+}
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
+  }
+}
+
+@keyframes glitchTop{
+  2%,64%{
+    transform: translate(2px,-2px);
+  }
+  4%,60%{
+    transform: translate(-2px,2px);
+  }
+  62%{
+    transform: translate(13px,-1px) skew(-13deg); 
+  }
+}
+
+@keyframes glitchBotom{
+  2%,64%{
+    transform: translate(-2px,0);
+  }
+  4%,60%{
+    transform: translate(-2px,0);
+  }
+  62%{
+    transform: translate(-22px,5px) skew(21deg); 
+  }
+}
+
+@keyframes colorPulse {
+  0%, 100% {
+    color:#0c0;
+  }
+  48%, 52% {
+    color:#090;
+  }
+  50% {
+    color:#060;
+  }
+}
+
+@keyframes wave {
+  0% {
+    box-shadow:0 -10vh 20vh #0c0;
+    top: -100vh;
+  }
+  48%, 52% {
+    box-shadow:0 -10vh 20vh #090;
+  }
+  50% {
+    box-shadow:0 -10vh 20vh #060;
+  }
+  100% {
+    box-shadow:0 -10vh 20vh #0c0;
+    top:100vh;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity:0;
+  }
+}
+
+@keyframes textflicker {
+  from {
+    text-shadow: 1px 0 0 #ea36af, -2px 0 0 #75fa69;
+  }
+  to {
+    text-shadow: 2px 0.5px 2px #ea36af, -1px -0.5px 2px #75fa69;
+  }
+}
+
+@keyframes blink {
+  0%,
+  22%,
+  36%,
+  75% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+      -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+      0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  }
+  28%,
+  33% {
+    color: #ff65bd;
+    text-shadow: none;
+  }
+  82%,
+  97% {
+    color: #ff2483;
+    text-shadow: none;
+  }
+}
+@keyframes shine {
+  0% {
+    color: #6b1839;
+    text-shadow: none;
+  }
+  100% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+      -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+      0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  }
+}
+@keyframes flicker {
+  from {
+    opacity: 1;
+  }
+
+  4% {
+    opacity: 0.9;
+  }
+
+  6% {
+    opacity: 0.85;
+  }
+
+  8% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  11% {
+    opacity: 0.922;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  14% {
+    opacity: 0.95;
+  }
+
+  16% {
+    opacity: 0.98;
+  }
+
+  17% {
+    opacity: 0.9;
+  }
+
+  19% {
+    opacity: 0.93;
+  }
+
+  20% {
+    opacity: 0.99;
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 0.94;
+  }
+
+  28% {
+    opacity: 0.98;
+  }
+
+  37% {
+    opacity: 0.93;
+  }
+
+  38% {
+    opacity: 0.5;
+  }
+
+  39% {
+    opacity: 0.96;
+  }
+
+  42% {
+    opacity: 1;
+  }
+
+  44% {
+    opacity: 0.97;
+  }
+
+  46% {
+    opacity: 0.94;
+  }
+
+  56% {
+    opacity: 0.9;
+  }
+
+  58% {
+    opacity: 0.9;
+  }
+
+  60% {
+    opacity: 0.99;
+  }
+
+  68% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.9;
+  }
+
+  72% {
+    opacity: 0.95;
+  }
+
+  93% {
+    opacity: 0.93;
+  }
+
+  95% {
+    opacity: 0.95;
+  }
+
+  97% {
+    opacity: 0.93;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+/* Style global: body et les différentes pages */
 html,body{
   margin: 0;
   padding: 0;
@@ -24,20 +316,16 @@ body{
   overflow: hidden;
 }
 
-#first-page{
+#first-page, #second-page, #third-page, #fourth-page, #fifth-page{
   width: 100vw;
-  height: 110vh;
-  position: relative;
-}
-
-#second-page{
-  width: 100vw;
-  height: 110vh;
-  background-color: blue;
+  height: 100vh;
 }
 
 
 
+
+/* Page 1 */
+/* Style animation type.js */
 .text1, .text2{
   color: green;
   font-size: 1.2em;
@@ -56,6 +344,7 @@ body{
   opacity: 0;
 }
 
+/* Effet de lumière sur l'interface du code */
 #shine {
   z-index: -1;
   position: absolute;
@@ -75,6 +364,7 @@ body{
   opacity: 0;
 }
 
+/* Style du tableau (interface pour rentrer son code) */
 table
 {
   margin-top: 7%;
@@ -88,48 +378,91 @@ table
   font-size: 2em;
   font-family: 'futured';
   text-shadow: 0 0 3vw rgb(35, 255, 35);
-  animation: flux 2s linear infinite;
-  -moz-animation: flux 2s linear infinite;
-  -webkit-animation: flux 2s linear infinite;
-  -o-animation: flux 2s linear infinite;
+  animation: neon1 2s linear infinite;
+  -moz-animation: neon1 2s linear infinite;
+  -webkit-animation: neon1 2s linear infinite;
+  -o-animation: neon1 2s linear infinite;
 
   border-collapse: collapse;
   background-color: black;
 }
 
-td, th /* Mettre une bordure sur les td ET les th */
+td, th
 {
   padding: 6%;
   border: 4px solid green;
 }
 
-
-
-
-#defaultCanvas0, #load-section{
+/* Style animation: nav bar, image glitcher et bar de chargement*/
+/* #defaultCanvas0, #load-section{
   display: none;
-}
+} */
 
-/*Canvas*/
-#progress-bar, #progress, #state, #arrow{
+/* Canvas
+#defaultCanvas0, #nav-bar, #progress-bar, #progress, #state, #arrow{
   opacity: 0;
-}
+} */
 
 #defaultCanvas0{
   top: 30%;
   left: 23%;
 
   position: absolute;
+  display: none;
 }
 
+#nav-bar{
+  position: fixed;
+  top: 0;
+  left: 0;
 
+  width: 100%;
 
+  font-family: 'futured';
+  color: rgb(81, 251, 66);
+
+  font-size: 1.8vw;
+  line-height: 1.8vw;
+
+  z-index: 3;
+}
+
+#nav-bar > ul{
+  display: flex;
+  justify-content: space-around;
+}
+
+#nav-bar > ul > li{
+  position: relative;
+
+  margin: 0;
+  padding: 0;
+
+  height: 50px;
+  overflow: hidden;
+}
+
+#nav-bar > ul > li:hover{
+  cursor: pointer;
+}
+
+#nav-bar > ul > li > span{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+}
+
+#nav-bar > ul > li:hover span{
+  animation: shuffle steps(7) 1s;
+}
 
 /* Progress bar */
 #progress-bar-container{
   width: 27%;
 
-  margin-top: 30%;
+  margin-top: 23%;
   margin-left: 35%;
 
   color: white;
@@ -143,10 +476,10 @@ td, th /* Mettre une bordure sur les td ET les th */
   font-size: 3vw;
   line-height: 3vw;
   text-shadow: 0 0 3vw rgb(35, 255, 35);
-  animation: flux 2s linear infinite;
-  -moz-animation: flux 2s linear infinite;
-  -webkit-animation: flux 2s linear infinite;
-  -o-animation: flux 2s linear infinite;
+  animation: neon1 2s linear infinite;
+  -moz-animation: neon1 2s linear infinite;
+  -webkit-animation: neon1 2s linear infinite;
+  -o-animation: neon1 2s linear infinite;
 }
 
 #progress{
@@ -175,7 +508,6 @@ progress{
   box-shadow: 0 1px 0 rgba(255,255,255,.2);   
 }
 
-/* Style de la barre pour Firefox*/
 progress::-moz-progress-bar{
   background: #2be002;
   background-size: 300px 20px, auto, auto;
@@ -187,10 +519,7 @@ progress::-moz-progress-bar{
 
 }
 
-/* Style de la barre pour Chrome*/
 progress::-webkit-progress-value{
- 
-  /* Code identique mais avec les bons préfixes! */
   background: #2be002;
   background-size: 300px 20px, auto, auto;
   background-position: -300px 0, top, top;
@@ -201,23 +530,259 @@ progress::-webkit-progress-value{
 
 }
 
-/* Enlève la couleur d'arrière-plan */
 progress::-webkit-progress-bar{
   background: transparent;
 }
 
 
 
-@keyframes flux {
-  0%,
 
-  100% {
-    text-shadow: 0 0 1vw rgb(16, 255, 28), 0 0 3vw rgb(16, 255, 28), 0 0 10vw rgb(16, 255, 28), 0 0 10vw rgb(16, 255, 28), 0 0 .4vw rgb(139, 254, 149), .2vw .2vw .1vw #147280;
-    color: rgb(40, 254, 68);
-  }
+/* Page 2 */
+#img-laylow-background{
+  position: absolute;
+  top: 0;
+  left: 0;
 
-  50% {
-    text-shadow: 0 0 .5vw #088008, 0 0 1.5vw #088008, 0 0 5vw #088008, 0 0 5vw #088008, 0 0 .2vw #088008, .2vw .2vw .1vw rgb(14, 64, 10);
-    color: rgb(20, 128, 52);
-  }
+  width: 100vw;
+  height: 100vh;
+
+  background: url("../img/laylow\ cyborg2.png") no-repeat center;
+  background-size: cover;
+
+  z-index: -2;
+}
+
+#overlay{
+  background-color: rgba(0, 0, 0, 0.6);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: -1;
+}
+
+#grid{
+  position: absolute;
+  top: 0;
+  
+  width: 100vw;
+  height: 100vh;
+
+  background-image:linear-gradient(transparent, transparent 3px, #222);
+  background-size:4px 4px;
+  content:"";
+  pointer-events:none;
+  position:absolute;
+
+  z-index: 2;
+}
+
+#presentation-text-container{
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 11%;
+  margin-left: 3%;
+
+  z-index: 1;
+  color: blue;
+
+  z-index: 1;
+
+  font-family: 'futured';
+  color: rgb(66, 251, 205);
+  font-size: 1.7em;
+}
+
+#presentation-text-container > ul{
+  list-style-type: none;
+}
+
+.topic-item{
+  margin-bottom: 60%;
+}
+
+.topic-item:hover{
+  cursor: pointer;
+  animation: glitch 1s linear infinite;
+}
+
+.topic-item:before, #topic-item:after{
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+.topic-item:before{
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+.topic-item:after{
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+.topic-content{
+  width: 50%;
+  height: 70vh;
+
+  animation:colorPulse 5s infinite ease-in-out;
+  background-image:radial-gradient(#444, #111);
+  box-shadow:0 0 5vmin 1vmin #000 inset;
+  box-sizing:border-box;
+  font-family:'Fira Mono', monospace;
+  font-size:20px;
+  overflow:hidden;
+  padding:10vmin;
+}
+
+.topic-content:before {
+  animation:wave 10s infinite ease-in-out;
+  content:"";
+  height:20vh;
+  left:0;
+  opacity:.5;
+  position:absolute;
+  right:0;
+  z-index:1;
+}
+
+p:after {
+  animation:blink 1s infinite;
+  content:"_";
+}
+
+
+
+
+#third-page-background{
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url("../img/background-album.jpg");
+
+  z-index: -1;
+}
+
+#album-topic{
+  width: 100%;
+
+  margin-top: 10%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#album-topic1, #album-topic2, #album-topic3{
+  width: 20%;
+  height: 400px;
+}
+
+#album-topic1{
+  margin-left: -10%;
+}
+
+#album-img-topic1{
+  margin-top: 18%;
+  margin-left: 37%;
+}
+
+#album-title-topic1{
+  margin-left: 30%;
+  font-family: 'Speedeasy';
+  color: #426DFB;
+  font-size: 3vw;
+  line-height: 3vw;
+  text-shadow: 0 0 3vw #2356FF;
+
+  animation: neon2 2s linear infinite;
+  -moz-animation: neon2 2s linear infinite;
+  -webkit-animation: neon2 2s linear infinite;
+  -o-animation: neon2 2s linear infinite;
+}
+
+#album-img-topic2{
+  margin-top: 14%;
+  margin-left: 41%;
+}
+
+#album-title-topic2{
+  margin-left: 22%;
+  
+  font-family: 'Nintendoid';
+  color: #eee;
+  text-shadow: 0.06rem 0 0.06rem #ea36af, -0.125rem 0 0.06rem #75fa69; 
+  letter-spacing: 0.125em;
+
+  animation-duration: 0.01s;
+  animation-name: textflicker;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#album-img-topic3{
+  margin-top: 14%;
+  margin-left: 43%;
+}
+
+#album-title-topic3{
+  margin-top: 60%;
+  margin-left: 112%;
+}
+
+/* Effect néon titre 3 */
+.sign {
+  margin-top: 3%;
+  margin-left: 50%;
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: radial-gradient(
+    ellipse 50% 35% at 50% 50%,
+    #6b1839,
+    transparent
+  );
+  transform: translate(-50%, -50%);
+
+  letter-spacing: 2;
+  text-transform: uppercase;
+  font-size: 2em;
+  font-family: "lato";
+  color: #ffe6ff;
+
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+    -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+    0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  animation: shine 2s forwards, flicker 3s infinite;
+}
+
+.flicker {
+  animation: shine 2s forwards, blink 3s 2s infinite;
+}
+
+.fast-flicker {
+  animation: shine 2s forwards, blink 10s 1s infinite;
+}
+
+#fourth-page{
+  background-color: green;
+}
+
+#fifth-page{
+  background-color: orange;
 }
